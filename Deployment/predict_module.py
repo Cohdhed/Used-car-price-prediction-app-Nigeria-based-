@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 # Load model and preprocessing artifacts
-artifact = joblib.load('car_price_prediction.joblib')
+artifact = joblib.load('Deployment/car_price_prediction.joblib')
 
 # Function to format price
 def format_price(price):
