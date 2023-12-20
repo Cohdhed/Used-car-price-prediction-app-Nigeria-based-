@@ -4,10 +4,15 @@ import streamlit as st
 import joblib
 import seaborn as sns
 import matplotlib.pyplot as plt
+import os
 
 
 # Load model and preprocessing artifacts
-artifact = joblib.load('Deployment/car_price_prediction.joblib')
+script_directory = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_directory, 'car_price_prediction.joblib')
+
+# Load the file using the absolute path
+artifact = joblib.load(file_path)
 
 # Function to format price
 def format_price(price):
