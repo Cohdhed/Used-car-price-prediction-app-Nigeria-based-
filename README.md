@@ -9,19 +9,7 @@ Welcome to the Used Car Price Prediction project, designed to provide accurate p
 - **Data Analysis:** Exploratory Data Analysis (EDA) is conducted to extract valuable insights from the dataset.
 - **Machine Learning:** The XGBoost Regressor algorithm is utilized to build a predictive pricing model, enhancing accuracy.
 - **Evaluation:** Model performance is assessed using metrics such as RMSE (Root Mean Squared Error), MAE (Mean Absolute Error), and R-squared.
-
-## Folder Structure
-
-- **Data Scraping:** This directory houses the Python script responsible for web scraping. Additionally, it includes a CSV file named 'car_prices.csv,' which supplements the scraped dataset.
-
-- **train.csv:** The primary dataset used for the car price prediction project.
-
-- **Used_Car_Price_Prediction.ipynb:** A Jupyter notebook detailing the step-by-step process, including data preprocessing, analysis and visualizations, feature engineering, and model building.
-
-- **README.md:** This comprehensive file provides a detailed project overview. Explore the notebooks for an in-depth understanding of the project's methodology. Your feedback and suggestions are highly valued!
-
-## Deployment
-The project has been successfully deployed, allowing users to interact with the predictive model. Visit the deployed app to experience real-time used car price predictions based on the insights gained from the project.
+- **Deployment:** The project has been successfully deployed, allowing users to interact with the predictive model. Visit the deployed app to experience real-time used car price predictions based on the insights gained from the project.
 
 [Explore the Deployed App](#) (Add the deployed app link here)
 
