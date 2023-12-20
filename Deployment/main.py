@@ -12,7 +12,7 @@ def main():
     
     # Render the selected page
     if page == "Home":
-        vhome_page()
+        home_page()
     elif page == "Make prediction":
         input_page()
  
