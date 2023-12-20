@@ -5,9 +5,16 @@ import joblib
 import seaborn as sns
 import plotly.express as px
 import matplotlib.pyplot as plt
+import os 
 
 #import data
-data = pd.read_csv('dataset.csv')
+# Get the absolute path to the current script's directory
+script_directory = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_directory, 'dataset.csv')
+
+# Load the CSV file using the absolute path
+data = pd.read_csv(file_path)
+
 car_makes = [ 'Honda', 'Acura', 'Peugeot', 'Nissan', 'Kia', 'Hyundai', 'Toyota',
         'Ford', 'Lexus', 'Mazda', 'Volkswagen', 'Mercedes-Benz',
         'Land Rover', 'Dodge', 'Subaru', 'Mitsubishi', 'Infiniti', 
@@ -19,7 +26,7 @@ data = data[data['Make'].isin(car_makes)]  #selct just the common makes in Niger
 # Home Page
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-def vhome_page():
+def home_page():
 
     # Welcome message with Markdown styling
     st.markdown(
