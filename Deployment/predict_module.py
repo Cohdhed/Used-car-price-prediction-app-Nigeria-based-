@@ -29,7 +29,7 @@ def format_mileage(mileage):
 
 # Function to check missing inputs
 def check_missing_inputs(data):
-    return any(value == '' for value in data.values())
+    return [key for key, value in data.items() if value == '']
 
 # Function to make predictions
 def predict(data):
