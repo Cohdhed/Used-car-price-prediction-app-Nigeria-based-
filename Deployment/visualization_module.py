@@ -55,7 +55,7 @@ def home_page():
         unsafe_allow_html=True
     )
 
-    with st.container():
+    with st.container(height=400):
     #Distribution of car makes
       car_makes = data['Make'].value_counts().reset_index(name='Count')
       total_records = len(data)
@@ -134,7 +134,7 @@ def home_page():
     """
     )
 
-    with st.container():
+    with st.container(height=400):
       # Brand-wise Price Comparison Bar Chart
       avg_price_by_make = data.groupby('Make')['Price'].mean().reset_index()
       fig_brand_price = px.bar(avg_price_by_make, x='Make', y='Price', title='Average Price by Brand')
@@ -190,7 +190,7 @@ def home_page():
     """
     )
 
-    with st.container():
+    with st.container(height=400):
       #price vs condition
       # Create a strip plot for 'condition' on the x-axis and 'price' on the y-axis
       fig_condition_price = px.violin(data, x='Condition', y='Price', color='Condition',
@@ -232,7 +232,7 @@ def home_page():
     )
 
 
-    with st.container():
+    with st.container(height=400):
       #scatter plot price vs mileage
       plt.figure(figsize=(10, 5.5))
       fig_price_mileage = px.scatter(data, x='Mileage', y='Price', title='Price vs Mileage',color='Condition', opacity=0.7)
@@ -273,7 +273,7 @@ def home_page():
     # Group by 'Year of manufacture' and calculate the average price
     average_prices = data.groupby('Year of manufacture')['Price'].mean().reset_index()
 
-    with st.container():
+    with st.container(height=400):
       # Create a line plot
       fig_price_yom = px.line(average_prices, x='Year of manufacture', y='Price', title='Average Price vs Year of manufacture')
       fig_price_yom.update_layout(
