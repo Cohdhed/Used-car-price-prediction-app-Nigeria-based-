@@ -55,38 +55,38 @@ def home_page():
         unsafe_allow_html=True
     )
 
-    with st.container(height=400):
+    #with st.container(height=400):
     #Distribution of car makes
-      car_makes = data['Make'].value_counts().reset_index(name='Count')
-      total_records = len(data)
-      # Calculate the percentage
-      car_makes['Percentage'] = (car_makes['Count'] / total_records) * 100
-      car_makes['Brand'] = car_makes['index']
-      car_makes = car_makes.sort_values(by='Percentage', ascending=True)
+    car_makes = data['Make'].value_counts().reset_index(name='Count')
+    total_records = len(data)
+    # Calculate the percentage
+    car_makes['Percentage'] = (car_makes['Count'] / total_records) * 100
+    car_makes['Brand'] = car_makes['index']
+    car_makes = car_makes.sort_values(by='Percentage', ascending=True)
 
-      # Create a bar chart
-      #fig_car_makes_distribution = px.bar(car_makes, x='Brand', y='Percentage',
-      #                                   color_continuous_scale='green', title='Distribution Of Car Brands (Percentage)')
-      
-      fig_car_makes_distribution = px.bar(
-      car_makes, 
-      y='Brand',  # Set 'Brand' as the y-axis for a horizontal bar plot
-      x='Percentage',
-      color_continuous_scale='green', 
-      orientation='h',  # Set orientation to 'h' for horizontal bars
-      title='Distribution Of Car Brands (Percentage)',
-      height=550,
-      width=600
-      )
-      # Get the figure's layout and update the title font color
-      fig_car_makes_distribution.update_layout( title=dict(text='Distribution Of Car Brands (Percentage)',
-                                                      font=dict( size=18)))  # Change 'blue' to the desired color
+    # Create a bar chart
+    #fig_car_makes_distribution = px.bar(car_makes, x='Brand', y='Percentage',
+    #                                   color_continuous_scale='green', title='Distribution Of Car Brands (Percentage)')
+    
+    fig_car_makes_distribution = px.bar(
+    car_makes, 
+    y='Brand',  # Set 'Brand' as the y-axis for a horizontal bar plot
+    x='Percentage',
+    color_continuous_scale='green', 
+    orientation='h',  # Set orientation to 'h' for horizontal bars
+    title='Distribution Of Car Brands (Percentage)',
+    height=550,
+    width=600
+    )
+    # Get the figure's layout and update the title font color
+    fig_car_makes_distribution.update_layout( title=dict(text='Distribution Of Car Brands (Percentage)',
+                                                    font=dict( size=18)))  # Change 'blue' to the desired color
 
-      # Update y-axis label
-      fig_car_makes_distribution.update_yaxes(title_text='Car Brand', title=dict(text='Car Brand', font=dict( size=18)))
-      fig_car_makes_distribution.update_xaxes(title_text='Percentage', title=dict(text='Percentage', font=dict( size=18)))
-      # Display the plot
-      st.plotly_chart(fig_car_makes_distribution, use_container_width=True)
+    # Update y-axis label
+    fig_car_makes_distribution.update_yaxes(title_text='Car Brand', title=dict(text='Car Brand', font=dict( size=18)))
+    fig_car_makes_distribution.update_xaxes(title_text='Percentage', title=dict(text='Percentage', font=dict( size=18)))
+    # Display the plot
+    st.plotly_chart(fig_car_makes_distribution)
 
     #Inference
     st.markdown(
@@ -134,19 +134,19 @@ def home_page():
     """
     )
 
-    with st.container(height=400):
-      # Brand-wise Price Comparison Bar Chart
-      avg_price_by_make = data.groupby('Make')['Price'].mean().reset_index()
-      fig_brand_price = px.bar(avg_price_by_make, x='Make', y='Price', title='Average Price by Brand')
-      
+    #with st.container(height=400):
+    # Brand-wise Price Comparison Bar Chart
+    avg_price_by_make = data.groupby('Make')['Price'].mean().reset_index()
+    fig_brand_price = px.bar(avg_price_by_make, x='Make', y='Price', title='Average Price by Brand')
+    
 
-      fig_brand_price.update_layout(title=dict(text='Average Price of a Used Car by its Brand',
-                                                      font=dict( size=18)))  
+    fig_brand_price.update_layout(title=dict(text='Average Price of a Used Car by its Brand',
+                                                    font=dict( size=18)))  
 
-      # Update y-axis label
-      fig_brand_price.update_yaxes(title_text='Average Price', title=dict(text='Average Price', font=dict( size=18)))
-      fig_brand_price.update_xaxes(title_text='Car Brand', title=dict(text='Car Brand', font=dict( size=18)))
-      st.plotly_chart(fig_brand_price)
+    # Update y-axis label
+    fig_brand_price.update_yaxes(title_text='Average Price', title=dict(text='Average Price', font=dict( size=18)))
+    fig_brand_price.update_xaxes(title_text='Car Brand', title=dict(text='Car Brand', font=dict( size=18)))
+    st.plotly_chart(fig_brand_price)
 
     #inference
     st.markdown(
@@ -190,19 +190,19 @@ def home_page():
     """
     )
 
-    with st.container(height=400):
-      #price vs condition
-      # Create a strip plot for 'condition' on the x-axis and 'price' on the y-axis
-      fig_condition_price = px.violin(data, x='Condition', y='Price', color='Condition',
-                                  labels={'Condition': 'Car Condition', 'Price': 'Price'},
-                                  title='Distribution of Price by Condition')
-      fig_condition_price.update_layout(title=dict(text='Distribution of Price by Condition',
-                                                      font=dict( size=20)))  
-      
-      # Update y-axis label
-      fig_condition_price.update_yaxes(title_text='Price', title=dict(text='Price', font=dict( size=18)))
-      fig_condition_price.update_xaxes(title_text='Car Condition', title=dict(text='Car Condition', font=dict( size=18)))
-      st.plotly_chart(fig_condition_price)
+    #with st.container(height=400):
+    #price vs condition
+    # Create a strip plot for 'condition' on the x-axis and 'price' on the y-axis
+    fig_condition_price = px.violin(data, x='Condition', y='Price', color='Condition',
+                                labels={'Condition': 'Car Condition', 'Price': 'Price'},
+                                title='Distribution of Price by Condition')
+    fig_condition_price.update_layout(title=dict(text='Distribution of Price by Condition',
+                                                    font=dict( size=20)))  
+    
+    # Update y-axis label
+    fig_condition_price.update_yaxes(title_text='Price', title=dict(text='Price', font=dict( size=18)))
+    fig_condition_price.update_xaxes(title_text='Car Condition', title=dict(text='Car Condition', font=dict( size=18)))
+    st.plotly_chart(fig_condition_price)
     
     #inference
     st.markdown(
@@ -232,21 +232,21 @@ def home_page():
     )
 
 
-    with st.container(height=400):
-      #scatter plot price vs mileage
-      plt.figure(figsize=(10, 5.5))
-      fig_price_mileage = px.scatter(data, x='Mileage', y='Price', title='Price vs Mileage',color='Condition', opacity=0.7)
-      fig_price_mileage.update_layout(
-          xaxis_title='Mileage',
-          yaxis_title='Price',)
-      
-      fig_price_mileage.update_layout(title=dict(text='Price vs Mileage',
-                                                      font=dict( size=20)))  
+    #with st.container(height=400):
+    #scatter plot price vs mileage
+    plt.figure(figsize=(10, 5.5))
+    fig_price_mileage = px.scatter(data, x='Mileage', y='Price', title='Price vs Mileage',color='Condition', opacity=0.7)
+    fig_price_mileage.update_layout(
+        xaxis_title='Mileage',
+        yaxis_title='Price',)
+    
+    fig_price_mileage.update_layout(title=dict(text='Price vs Mileage',
+                                                    font=dict( size=20)))  
 
-      # Update y-axis label
-      fig_price_mileage.update_yaxes(title_text='Price', title=dict(text='Price', font=dict( size=18)))
-      fig_price_mileage.update_xaxes(title_text='Mileage', title=dict(text='Mileage', font=dict( size=18)))
-      st.plotly_chart(fig_price_mileage)
+    # Update y-axis label
+    fig_price_mileage.update_yaxes(title_text='Price', title=dict(text='Price', font=dict( size=18)))
+    fig_price_mileage.update_xaxes(title_text='Mileage', title=dict(text='Mileage', font=dict( size=18)))
+    st.plotly_chart(fig_price_mileage)
 
     #inference
     st.markdown(
@@ -273,20 +273,20 @@ def home_page():
     # Group by 'Year of manufacture' and calculate the average price
     average_prices = data.groupby('Year of manufacture')['Price'].mean().reset_index()
 
-    with st.container(height=400):
-      # Create a line plot
-      fig_price_yom = px.line(average_prices, x='Year of manufacture', y='Price', title='Average Price vs Year of manufacture')
-      fig_price_yom.update_layout(
-          xaxis_title='Year of manufacture',
-          yaxis_title='Average Price',
-      )
-      fig_price_yom.update_layout(title=dict(text='Price vs Year of manufacture',
-                                                      font=dict( size=20)))  
+    #with st.container(height=400):
+    # Create a line plot
+    fig_price_yom = px.line(average_prices, x='Year of manufacture', y='Price', title='Average Price vs Year of manufacture')
+    fig_price_yom.update_layout(
+        xaxis_title='Year of manufacture',
+        yaxis_title='Average Price',
+    )
+    fig_price_yom.update_layout(title=dict(text='Price vs Year of manufacture',
+                                                    font=dict( size=20)))  
 
-      # Update y-axis label
-      fig_price_yom.update_yaxes(title_text='Price', title=dict(text='Price', font=dict( size=18)))
-      fig_price_yom.update_xaxes(title_text='Year of manufacture', title=dict(text='Year of manufacture', font=dict( size=18)))
-      st.plotly_chart(fig_price_yom)
+    # Update y-axis label
+    fig_price_yom.update_yaxes(title_text='Price', title=dict(text='Price', font=dict( size=18)))
+    fig_price_yom.update_xaxes(title_text='Year of manufacture', title=dict(text='Year of manufacture', font=dict( size=18)))
+    st.plotly_chart(fig_price_yom)
 
     # Inference
     st.markdown(
