@@ -5,6 +5,7 @@ import joblib
 import seaborn as sns
 import plotly.express as px
 import matplotlib.pyplot as plt
+import xgboost
 import os 
 
 #import data
