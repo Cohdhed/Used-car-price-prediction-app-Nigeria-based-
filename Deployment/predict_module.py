@@ -10,7 +10,7 @@ import os
 
 # Load model and preprocessing artifacts
 script_directory = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(script_directory, 'car_price_prediction.joblib')
+file_path = os.path.join(script_directory, 'used_car_price_prediction.joblib')
 
 # Load the file using the absolute path
 artifact = joblib.load(file_path)
