@@ -4,6 +4,7 @@ import streamlit as st
 import joblib
 import seaborn as sns
 import matplotlib.pyplot as plt
+import xgboost
 import os
 
 
