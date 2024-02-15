@@ -62,7 +62,8 @@ def home_page():
     total_records = len(data)
     # Calculate the percentage
     car_makes['Percentage'] = (car_makes['Count'] / total_records) * 100
-    car_makes['Brand'] = car_makes['index']
+    car_makes.rename(columns={'index': 'Make'}, inplace=True)
+    #car_makes['Brand'] = car_makes['index']
     car_makes = car_makes.sort_values(by='Percentage', ascending=True)
 
     # Create a bar chart
@@ -71,7 +72,7 @@ def home_page():
     
     fig_car_makes_distribution = px.bar(
     car_makes, 
-    y='Brand',  # Set 'Brand' as the y-axis for a horizontal bar plot
+    y='Make',  # Set 'Make' as the y-axis for a horizontal bar plot
     x='Percentage',
     color_continuous_scale='green', 
     orientation='h',  # Set orientation to 'h' for horizontal bars
